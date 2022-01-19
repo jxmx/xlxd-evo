@@ -126,7 +126,7 @@
 #define YSF_DEFAULT_NODE_TX_FREQ        437000000                           // in Hz
 #define YSF_DEFAULT_NODE_RX_FREQ        437000000                           // in Hz
 #define YSF_AUTOLINK_ENABLE             1                                   // 1 = enable, 0 = disable auto-link
-#define YSF_AUTOLINK_MODULE             'A'                                 // module for client to auto-link to
+#define YSF_AUTOLINK_MODULE             'Q'                                 // module for client to auto-link to
 
 // G3 Terminal
 #define G3_PRESENCE_PORT                12346                               // UDP port
