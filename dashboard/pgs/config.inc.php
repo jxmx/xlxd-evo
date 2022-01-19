@@ -17,10 +17,12 @@ $VNStat      = array();
 
 $PageOptions['ContactEmail']                         = 'your_email';	// Support E-Mail address
 
-$PageOptions['DashboardVersion']                     = '2.4.1';		// Dashboard Version
+$PageOptions['DashboardVersion']                     = '2.4.2';		// Dashboard Version
 
 $PageOptions['PageRefreshActive']                    = true;		// Activate automatic refresh
 $PageOptions['PageRefreshDelay']                     = '10000';		// Page refresh time in miliseconds
+
+$PageOptions['NumberOfModules']                      = 10;		// Number of Modules enabled on reflector
 
 $PageOptions['RepeatersPage'] = array();
 $PageOptions['RepeatersPage']['LimitTo']             = 99;		// Number of Repeaters to show
