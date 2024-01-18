@@ -50,7 +50,7 @@
 
 #define VERSION_MAJOR                   2
 #define VERSION_MINOR                   5
-#define VERSION_REVISION                3
+#define VERSION_REVISION                301
 
 // global ------------------------------------------------------
 
@@ -126,7 +126,7 @@
 #define YSF_DEFAULT_NODE_TX_FREQ        437000000                           // in Hz
 #define YSF_DEFAULT_NODE_RX_FREQ        437000000                           // in Hz
 #define YSF_AUTOLINK_ENABLE             1                                   // 1 = enable, 0 = disable auto-link
-#define YSF_AUTOLINK_MODULE             'Q'                                 // module for client to auto-link to
+#define YSF_AUTOLINK_MODULE             'A'                                 // module for client to auto-link to
 
 // G3 Terminal
 #define G3_PRESENCE_PORT                12346                               // UDP port
@@ -146,7 +146,7 @@
 #define TRANSCODER_PORT                 10100                               // UDP port
 #define TRANSCODER_KEEPALIVE_PERIOD     5                                   // in seconds
 #define TRANSCODER_KEEPALIVE_TIMEOUT    30                                  // in seconds
-#define TRANSCODER_AMBEPACKET_TIMEOUT   400                                 // in ms
+#define TRANSCODER_AMBEPACKET_TIMEOUT   999                                 // in ms
 
 // codec --------------------------------------------------------
 
