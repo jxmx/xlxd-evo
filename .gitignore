@@ -1,4 +1,3 @@
 *.o
 src/xlxd
 ambed/ambed
-ambedtest/ambedtest
