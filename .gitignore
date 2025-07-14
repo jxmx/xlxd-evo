@@ -3,3 +3,5 @@ src/build
 src/xlxd
 ambed/ambed
 ambed/build
+ambed/libftdi/
+ambed/*.tgz

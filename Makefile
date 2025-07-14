@@ -5,8 +5,7 @@ DEBVER = 1
 RELPLAT ?= deb$(shell lsb_release -rs 2> /dev/null)
 
 BUILDABLES = \
-    src \
-	ambed 
+    src 
 
 ROOT_FILES = LICENSE README.md 
 ROOT_INSTALLABLES = $(patsubst %, $(DESTDIR)$(docdir)/%, $(CONF_FILES))
@@ -22,3 +21,5 @@ distclean:
 	$(foreach dir, $(BUILDABLES), rm -rf $(dir)/build; )
 	
 
+ambed:
+	$(MAKE) -C ambed 

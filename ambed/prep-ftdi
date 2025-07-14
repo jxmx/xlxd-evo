@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+set -e
+
+URL_BASE="https://ftdichip.com/wp-content/uploads/2025/03"
+REL_VER="1.4.33"
+
+case $(uname -m) in
+	x86_64)
+		PLAT=x86_64
+		;;
+	aarch64)
+		PLAT=arm-v8
+		;;
+	armhf)
+		PLAT=arm-v7-hf
+		;;
+	*)
+		echo "Error"
+		exit 1
+		;;
+esac
+
+FILE_TGZ="libftd2xx-linux-${PLAT}-${REL_VER}.tgz"
+FULL_URL="${URL_BASE}/${FILE_TGZ}"
+
+wget -O${FILE_TGZ} ${FULL_URL}
+tar xvfz ${FILE_TGZ}
+mv linux-${PLAT} libftdi
+

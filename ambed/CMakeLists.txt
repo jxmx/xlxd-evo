@@ -29,18 +29,33 @@ include_directories(${CMAKE_BINARY_DIR})
 # Set compiler flags
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -static -static-libstdc++")
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+set(BUILD_SHARED_LIBS OFF)
 
 # Gather all source files
 file(GLOB SOURCES "*.cpp")
 
+# Needs the FTDI library
+set(FTDI_LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/libftdi")
+set(FTDI_STATIC_LIB "${FTDI_LIB_PATH}/libftd2xx-static.a")
+add_custom_target(run_prebuild_script
+    COMMAND ${CMAKE_COMMAND} -E echo "Running pre-build script..."
+    COMMAND ${CMAKE_COMMAND} -E env bash ${CMAKE_SOURCE_DIR}/prep-ftdi
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+
 # Create executable from sources
 add_executable(ambed ${SOURCES})
+add_dependencies(ambed run_prebuild_script)
+
 target_compile_options(ambed PRIVATE -pthread)
 
 target_compile_definitions(ambed PRIVATE
     $<$<BOOL:${ENABLE_DAEMON}>:RUN_AS_DAEMON>
 )
+
+target_link_libraries(ambed PRIVATE ${FTDI_STATIC_LIB})
 
 install(TARGETS ambed DESTINATION bin)
 
