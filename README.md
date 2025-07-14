@@ -1,17 +1,30 @@
-﻿# Copyright
-
-© 2016 Jean-Luc Deltombe LX3JL and Luc Engelmann LX1IQ
-
+﻿# XLXD Evolution
 The XLX Multiprotocol Gateway Reflector Server is part of the software system
-for the D-Star Network.
-The sources are published under GPL Licenses.
+for multiple amateur radio digital modes. The sources are published under
+GPL Licenses.
 
-# Supported Protocols since XLX v2.5.x
+This is a fork of xlxd that intends to strongly track to upstream
+but standardize and modernize the code. Specifically, the initial goals
+are to:
+
+* Reorganize the project so applications/files follow standard
+Linux filesystem conventions
+* Package for Debian
+* Update the web GUI to create a responsive site for mobile
+* Apply certain updates to further customization and branding of the GUI
+
+## Supported Protocols since XLX v2.5.x
 
 - In D-Star, Icom-G3Terminal, DExtra, DPLus and DCS
 - In DMR, DMRPlus (dongle) and DMRMmdvm
 - In C4FM, YSF, Wires-X and IMRS
 - XLX Interlink protocol
+
+
+## Copyright
+
+© 2016-2024 Jean-Luc Deltombe LX3JL and Luc Engelmann LX1IQ
+© 2016-2025 Jason McCormick N8EI
 
 # Usage
 
