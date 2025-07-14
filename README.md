@@ -1,9 +1,8 @@
 ﻿# XLXD Evolution
 The XLX Multiprotocol Gateway Reflector Server is part of the software system
 for multiple amateur radio digital modes. The sources are published under
-GPL Licenses.
-
-This is a fork of xlxd that intends to strongly track to upstream
+GPL Licenses. The "Evolution" version of xlxd is a is a fork of xlxd that
+intends to strongly track to upstream (if there are future changes)
 but standardize and modernize the code. Specifically, the initial goals
 are to:
 
@@ -12,6 +11,7 @@ Linux filesystem conventions
 * Package for Debian
 * Update the web GUI to create a responsive site for mobile
 * Apply certain updates to further customization and branding of the GUI
+* Include useful un-actioned pull requests from upstream
 
 ## Supported Protocols since XLX v2.5.x
 
