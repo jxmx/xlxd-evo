@@ -41,42 +41,17 @@
 #include <fstream>
 #include <algorithm>
 #include <arpa/inet.h>
+#include "config.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // defines
 
-// version -----------------------------------------------------
-
-#define VERSION_MAJOR                   1
-#define VERSION_MINOR                   3
-#define VERSION_REVISION                5
-
-// global ------------------------------------------------------
-
-//#define RUN_AS_DAEMON
-#define NB_MAX_STREAMS                  99
 //#define DEBUG_DUMPFILE
-
-// Transcoder server --------------------------------------------
-#define TRANSCODER_PORT                 10100                               // UDP port
 
 // Codecs -------------------------------------------------------
 #define CODEC_NONE                      0
 #define CODEC_AMBEPLUS                  1
 #define CODEC_AMBE2PLUS                 2
-
-// Transcoding speech gains
-#define CODECGAIN_AMBEPLUS              -10                                 // in dB
-#define CODECGAIN_AMBE2PLUS             +10                                 // in dB
-
-// Transcoding Tweaks
-#define USE_AGC                         0
-#define AGC_CLAMPING                    3                                   //clamps the AGC gain to +- this value
-#define USE_BANDPASSFILTER              1
-
-// Timeouts -----------------------------------------------------
-#define STREAM_ACTIVITY_TIMEOUT         3                                   // in seconds
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // typedefs

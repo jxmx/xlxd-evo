@@ -108,6 +108,7 @@ target_compile_definitions(xlxd PRIVATE
     $<$<BOOL:${ENABLE_JSON}>:JSON_MONITOR>
 )
 
+install(TARGETS xlxd DESTINATION bin)
 
 # Custom clean command
 add_custom_target(clean-all
