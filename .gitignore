@@ -1,3 +1,5 @@
 *.o
+src/build
 src/xlxd
 ambed/ambed
+ambed/build
