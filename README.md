@@ -1,10 +1,30 @@
-# Copyright
-
-© 2016 Jean-Luc Deltombe LX3JL and Luc Engelmann LX1IQ
-
+﻿# XLXD Evolution
 The XLX Multiprotocol Gateway Reflector Server is part of the software system
-for the D-Star Network.
-The sources are published under GPL Licenses.
+for multiple amateur radio digital modes. The sources are published under
+GPL Licenses.
+
+This is a fork of xlxd that intends to strongly track to upstream
+but standardize and modernize the code. Specifically, the initial goals
+are to:
+
+* Reorganize the project so applications/files follow standard
+Linux filesystem conventions
+* Package for Debian
+* Update the web GUI to create a responsive site for mobile
+* Apply certain updates to further customization and branding of the GUI
+
+## Supported Protocols since XLX v2.5.x
+
+- In D-Star, Icom-G3Terminal, DExtra, DPLus and DCS
+- In DMR, DMRPlus (dongle) and DMRMmdvm
+- In C4FM, YSF, Wires-X and IMRS
+- XLX Interlink protocol
+
+
+## Copyright
+
+© 2016-2024 Jean-Luc Deltombe LX3JL and Luc Engelmann LX1IQ
+© 2016-2025 Jason McCormick N8EI
 
 # Usage
 
@@ -127,11 +147,14 @@ XLX Server requires the following ports to be open and forwarded properly for in
  - UDP port 62030         (MMDVM protocol)
  - UDP port 10100         (AMBE controller port)
  - UDP port 10101 - 10199 (AMBE transcoding port)
+ - UDP port 12345 - 12346 (Icom Terminal presence and request port)
+ - UDP port 40000         (Icom Terminal dv port)
+ - UDP port 21110         (Yaesu IMRS protocol)
 
 # YSF Master Server
 
 Pay attention, the XLX Server acts as an YSF Master, which provides 26 wires-x rooms.
 It has nothing to do with the regular YSFReflector network, hence you don’t need to register your XLX at ysfreflector.de !
+Nevertheless it is possible.
 
-
-© 2016 Jean-Luc Deltombe and Luc Engelmann LX1IQ
+© 2016 Jean-Luc Deltombe (LX3JL) and Luc Engelmann (LX1IQ)

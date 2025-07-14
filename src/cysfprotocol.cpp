@@ -253,8 +253,17 @@ bool CYsfProtocol::OnDvHeaderPacketIn(CDvHeaderPacket *Header, const CIp &Ip)
         {
             // get client callsign
             via = client->GetCallsign();
-            // get module it's linked to
-            Header->SetRpt2Module(client->GetReflectorModule());
+
+            if ( Header->GetRpt2Module() == ' ' ) {
+                // module not filled, get module it's linked to
+                Header->SetRpt2Module(client->GetReflectorModule());
+            } else {
+                // handle changing linked module to the one set on rpt2
+                if ( client->GetReflectorModule() != Header->GetRpt2Module() ) {
+                    std::cout << "YSF client " << client->GetCallsign() << " linking on module " << Header->GetRpt2Module() << std::endl;
+                    client->SetReflectorModule(Header->GetRpt2Module());
+                }
+            }
 
             // and try to open the stream
             if ( (stream = g_Reflector.OpenStream(Header, client)) != NULL )
@@ -460,16 +469,26 @@ bool CYsfProtocol::IsValidDvHeaderPacket(const CIp &Ip, const CYSFFICH &Fich, co
              char sz[YSF_CALLSIGN_LENGTH+1];
             ::memcpy(sz, &(Buffer.data()[14]), YSF_CALLSIGN_LENGTH);
             sz[YSF_CALLSIGN_LENGTH] = 0;
-            CCallsign csMY = CCallsign((const char *)sz);
+            CCallsign csMY = CCallsign();
+            csMY.SetYsfCallsign(sz);
             ::memcpy(sz, &(Buffer.data()[4]), YSF_CALLSIGN_LENGTH);
             sz[YSF_CALLSIGN_LENGTH] = 0;
             CCallsign rpt1 = CCallsign((const char *)sz);
             rpt1.SetModule(YSF_MODULE_ID);
             CCallsign rpt2 = m_ReflectorCallsign;
-            // as YSF protocol does not provide a module-tranlatable
-            // destid, set module to none and rely on OnDvHeaderPacketIn()
-            // to later fill it with proper value
-            rpt2.SetModule(' ');
+
+            if ( (Fich.getSQ() >= 10) && (Fich.getSQ() < 10+NB_OF_MODULES) )
+            {
+                // set module based on DG-ID value
+                rpt2.SetModule( 'A' + (char)(Fich.getSQ() - 10) );
+            }
+            else
+            {
+                // as YSF protocol does not provide a module-tranlatable
+                // destid, set module to none and rely on OnDvHeaderPacketIn()
+                // to later fill it with proper value
+                rpt2.SetModule(' ');
+            }
             
             // and packet
             *header = new CDvHeaderPacket(csMY, CCallsign("CQCQCQ"), rpt1, rpt2, uiStreamId, Fich.getFN());
@@ -478,8 +497,8 @@ bool CYsfProtocol::IsValidDvHeaderPacket(const CIp &Ip, const CYSFFICH &Fich, co
         {
             uint8  uiAmbe[AMBE_SIZE];
             ::memset(uiAmbe, 0x00, sizeof(uiAmbe));
-            frames[0] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 0, 0);
-            frames[1] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 1, 0);
+            frames[0] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 0, (uint8)0);
+            frames[1] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 1, (uint8)0);
         }
         
         // check validity of packets
@@ -582,8 +601,8 @@ bool CYsfProtocol::IsValidDvLastFramePacket(const CIp &Ip, const CYSFFICH &Fich,
         {
             uint8  uiAmbe[AMBE_SIZE];
             ::memset(uiAmbe, 0x00, sizeof(uiAmbe));
-            frames[0] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 0, 0);
-            frames[1] = new CDvLastFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 1, 0);
+            frames[0] = new CDvFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 0, (uint8)0);
+            frames[1] = new CDvLastFramePacket(uiAmbe, uiStreamId, Fich.getFN(), 1, (uint8)0);
         }
         
         // check validity of packets
@@ -784,8 +803,8 @@ bool CYsfProtocol::EncodeDvLastPacket(const CDvHeaderPacket &Header, CBuffer *Bu
     Buffer->Append((uint8 *)sz, YSF_CALLSIGN_LENGTH);
     // dest
     Buffer->Append(dest, 10);
-    // net frame counter
-    Buffer->Append((uint8)0x00);
+    // eot status bit + net frame counter (<<1)
+    Buffer->Append((uint8)0x01);
     // FS
     Buffer->Append((uint8 *)YSF_SYNC_BYTES, YSF_SYNC_LENGTH_BYTES);
     // FICH
