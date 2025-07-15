@@ -23,7 +23,8 @@ esac
 FILE_TGZ="libftd2xx-linux-${PLAT}-${REL_VER}.tgz"
 FULL_URL="${URL_BASE}/${FILE_TGZ}"
 
-wget -O${FILE_TGZ} ${FULL_URL}
-tar xvfz ${FILE_TGZ}
+rm -rf linux-${PLAT} libftdi
+test ! -f ${FILE_TGZ} && wget -O${FILE_TGZ} ${FULL_URL}
+tar xfz ${FILE_TGZ}
 mv linux-${PLAT} libftdi
 
