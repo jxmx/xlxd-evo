@@ -13,7 +13,8 @@ BUILDABLES = \
 	ambed
 
 INSTALLABLES = \
-	config
+	config \
+	systemd
 
 ROOT_FILES = LICENSE README.md 
 ROOT_INSTALLABLES = $(patsubst %, $(DESTDIR)$(docdir)/%, $(ROOT_FILES))
@@ -26,6 +27,8 @@ install: $(ROOT_INSTALLABLES)
 	$(foreach dir, $(BUILDABLES), ( cd $(dir)/build && make install); )
 	$(foreach dir, $(INSTALLABLES), ( cd $(dir) && make install); )
 
+setup:
+	( cd systemd && make install-user; )
 
 clean:
 	$(foreach dir, $(BUILDABLES), ( cd $(dir)/build && make clean); )
