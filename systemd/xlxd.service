@@ -4,13 +4,13 @@ After=network.target ambed.service
 
 [Service]
 Type=forking
-User=root
-Group=root
+User=xlxd
+Group=xlxd
 EnvironmentFile=/etc/default/xlxd
-ExecStart=/xlxd/xlxd ${REFLECTOR} ${BIND_IP} ${AMBED_IP}
-ExecStartPost=/bin/sh -c 'umask 022; pgrep xlxd > /var/log/xlxd.pid'
+ExecStart=/usr/bin/xlxd ${REFLECTOR} ${BIND_IP} ${AMBED_IP}
+ExecStartPost=/bin/sh -c 'umask 022; pgrep xlxd > /run/xlxd.pid'
 Restart=on-abnormal
-PIDFile=/var/log/xlxd.pid
+PIDFile=/run/xlxd.pid
 
 [Install]
 WantedBy=multi-user.target
