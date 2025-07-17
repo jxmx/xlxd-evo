@@ -13,6 +13,7 @@ install-ambed:	$(AMBED_SYSTEMD_FILES)
 
 $(DESTDIR)/lib/systemd/system/%: %
 	install -D -m 0644  $< $@
+	systemctl daemon-reload
 
 $(DESTDIR)/etc/default/%: %.default
 	install -D -m 0644  $< $@
