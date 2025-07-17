@@ -69,7 +69,7 @@ bool CG3Protocol::Init(void)
         std::cout << "Error opening socket on port UDP" << G3_CONFIG_PORT << " on ip " << g_Reflector.GetListenIp() << std::endl;
     }
 
-#ifndef DEBUG_NO_G3_ICMP_SOCKET
+#ifdef G3_ICMP_HELPER
     ok &= m_IcmpRawSocket.Open(IPPROTO_ICMP);
     if ( !ok )
     {
