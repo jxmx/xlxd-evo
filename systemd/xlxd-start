@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# $1 = ${REFLECTOR}
+# $2 = ${BIND_IP}
+# $3 = ${AMBED_IP}
+
+# Check if input matches XLX followed by either 3 digits or 3 uppercase letters
+if [[ "$1" =~ ^XLX([0-9]{3}|[A-Z]{3})$ ]]; then
+    REFLECTOR=$1
+else
+    echo "REFELCTOR in /etc/default/xlxd must be XLX followed by"
+	echo "exactly 3 numbers or uppercase letters"
+	exit 1
+fi
+
+if [ "$2" == "0.0.0.0" ]; then
+	BIND_IFACE=$(ip route show | grep -E '^default' | head -1 | awk '{print $5}')
+	BIND_IP=$(ip -4 addr show dev ${BIND_IFACE} | awk '/inet / {print $2}' | cut -d/ -f1)
+	echo "Using auto-computed IP ${BIND_IP}"
+else
+	BIND_IP=$2
+fi
+
+exec xlxd $REFLECTOR $BIND_IP $3

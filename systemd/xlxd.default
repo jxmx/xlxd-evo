@@ -3,7 +3,9 @@
 # Enter XLX name/number here
 REFLECTOR="XLXnnn"
 
-# Enter IP for binding here
+# Enter IP for binding here. If 0.0.0.0 the start wrapper will select
+# the IP associated with the interface holding the default gateway.
+# Unless you have a specific reason to change this, leave it alone.
 BIND_IP="0.0.0.0"
 
 # Change this is ambed is running on a different host

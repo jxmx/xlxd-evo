@@ -1,6 +1,7 @@
 XLXD_SYSTEMD_FILES = \
 	$(DESTDIR)/lib/systemd/system/xlxd.service \
-	$(DESTDIR)/etc/default/xlxd
+	$(DESTDIR)/etc/default/xlxd \
+	$(DESTDIR)/usr/bin/xlxd-start
 
 AMBED_SYSTEMD_FILES= \
 	$(DESTDIR)/lib/systemd/system/ambed.service
@@ -14,6 +15,9 @@ install-ambed:	$(AMBED_SYSTEMD_FILES)
 $(DESTDIR)/lib/systemd/system/%: %
 	install -D -m 0644  $< $@
 	systemctl daemon-reload
+
+$(DESTDIR)/usr/bin/%:	%
+	install -D -m 0755 $< $@
 
 $(DESTDIR)/etc/default/%: %.default
 	install -D -m 0644  $< $@
