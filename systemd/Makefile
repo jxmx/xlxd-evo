@@ -6,7 +6,7 @@ XLXD_SYSTEMD_FILES = \
 AMBED_SYSTEMD_FILES= \
 	$(DESTDIR)/lib/systemd/system/ambed.service
 
-install:	$(XLXD_SYSTEMD_FILES)
+install:	$(XLXD_SYSTEMD_FILES) install-ambed
 
 install-user:	ensure-xlxd-user
 
@@ -14,7 +14,6 @@ install-ambed:	$(AMBED_SYSTEMD_FILES)
 
 $(DESTDIR)/lib/systemd/system/%: %
 	install -D -m 0644  $< $@
-	systemctl daemon-reload
 
 $(DESTDIR)/usr/bin/%:	%
 	install -D -m 0755 $< $@
