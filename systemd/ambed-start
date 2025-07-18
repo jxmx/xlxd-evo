@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+# $1 = ${AMBED_IP}
+
+if [ "$1" == "0.0.0.0" ]; then
+	BIND_IFACE=$(ip route show | grep -E '^default' | head -1 | awk '{print $5}')
+	BIND_IP=$(ip -4 addr show dev ${BIND_IFACE} | awk '/inet / {print $2}' | cut -d/ -f1)
+	echo "Using auto-computed IP ${BIND_IP}"
+else
+	BIND_IP=$1
+fi
+
+exec ambed ${BIND_IP}

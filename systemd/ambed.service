@@ -6,10 +6,13 @@ After=network.target
 Type=simple
 User=root
 Group=root
+EnvironmentFile=/etc/default/ambed
 ExecStartPre=-/sbin/rmmod ftdi_sio
 ExecStartPre=-/sbin/rmmod usb_serial
-ExecStart=/xlxd/ambed 127.0.0.1
+ExecStart=/usr/bin/ambed-start ${BIND_IP}
+ExecStartPost=/bin/sh -c 'umask 022; pgrep ambed > /run/ambed.pid'
 Restart=on-abnormal
+PIDFile=/run/ambed.pid
 
 [Install]
 WantedBy=multi-user.target
