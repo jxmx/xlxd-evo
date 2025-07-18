@@ -1,0 +1,20 @@
+Source: xlxd-evo
+Section: hamradio
+Priority: optional
+Maintainer: Jason McCormick <jason@mfamily.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Homepage: https://github.com/AllStarLink/xlxd-evo
+Vcs-Browser: https://github.com/AllStarLink/xlxd-evo
+Vcs-Git: https://github.com/AllStarLink/xlxd-evo.git
+Rules-Requires-Root: no
+
+Package: xlxd-evo
+Architecture: any
+Depends: ${misc:Depends}
+Description: XLXD Multiprotocol Reflector for amateur radio
+
+Package: xlxd-evo-ambed
+Architecture: any
+Depends: ${misc:Depends}
+Description: AMBE Transcoder enginer for AMBE-based dongles

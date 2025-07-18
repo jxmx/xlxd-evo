@@ -1,0 +1,5 @@
+etc/default/xlxd
+etc/xlxd/xlxd.*
+lib/systemd/system/xlxd.service
+usr/share/doc/xlxd-evo/*
+usr/bin/xlxd*

@@ -1,0 +1,4 @@
+lib/systemd/system/ambed.service
+usr/share/doc/xlxd-evo/README.md
+usr/share/doc/xlxd-evo/LICENSE
+usr/bin/ambed
