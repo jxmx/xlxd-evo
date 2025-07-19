@@ -1,5 +1,6 @@
 XLXD_SYSTEMD_FILES = \
 	$(DESTDIR)/lib/systemd/system/xlxd.service \
+	$(DESTDIR)/etc/default/ambed \
 	$(DESTDIR)/etc/default/xlxd \
 	$(DESTDIR)/usr/bin/xlxd-start
 
