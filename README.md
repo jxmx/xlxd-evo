@@ -45,57 +45,70 @@ network infrastructure free of charge!
 The software packages for Linux are tested on Debian 12 and Debian 13.
 The platforms x86\_64 and aarch64.
 
-# Installation - xlxd and ambed
+# Installation - Debian Packages
+TODO
+
+# Installation - Source Build
 All installation is done as root - either `sudo -s` or prefix installation
 steps with `sudo`.
 
-## Install Git
-```bash
-apt install git git-core
-```
+* Install All dependendcies for buildling
+    ```bash
+    apt install build-essential g++ cmake wget git
+    ```
 
-## Install Build Tools
+* Build the software
 ```bash
-apt-get install build-essential g++ cmake
-```
-
-## Download and compile the XLX sources
-```bash
-git clone https://github.com/LX3JL/xlxd.git
-cd xlxd
-make clean
+git clone https://github.com/jxmx/xlxd-evo.git
+cd xlxd-evo
 make
-make install
 ```
 
-## Configuration Options
-TODO - see CMakelist.txt
-
-### YSF Options
-TODO - document the YSF master vs room and autojoin
-
-# Start or stop the service with
+* Install Software
 ```bash
-service xlxd start
-service xlxd stop
+make install
+make -f systemd/Makefile install-user
+```
+
+* Edit configuration
+    ```bash
+    nano /etc/default/xlxd
+    nano /etc/default/ambed
+    ```
+
+    For the most basic/standard setup, just set the variable
+    `REFLECTOR` to your reflector. For a new reflector, you
+    need to pick a new ID from one not already used at 
+    http://xlxapi.rlx.lu/index.php?show=reflectors
+
+* Enable the services (ambed is optional for transcoding0
+```bash
+systemctl daemon-reload
+systemctl start xlxd
+systemctl enable xlxd
+
+systemctl start ambed
+systemctl enable ambed
 ```
 
 # Firewall Ports Needed
 
-XLX Server requires the following ports to be open and forwarded properly for in- and outgoing network traffic:
- - TCP port 80            (http) optional TCP port 443 (https)
- - TCP port 8080          (RepNet) optional
+XLX Server requires some or all of the following ports to be open
+and/or forwarded properly for network traffic:
+
  - UDP port 8880          (DMR+ DMO mode)
  - UDP port 10001         (json interface XLX Core)
  - UDP port 10002         (XLX interlink)
  - UDP port 10100         (AMBE controller port)
  - UDP port 10101 - 10199 (AMBE transcoding port)
  - UDP port 12345 - 12346 (Icom Terminal presence and request port)
+ - UDP port 20001         (DPlus protocol)
  - UDP port 21110         (Yaesu IMRS protocol)
  - UDP port 30001         (DExtra protocol)
  - UDP port 30051         (DCS protocol)
  - UDP port 40000         (Icom Terminal dv port)
  - UDP port 42000         (YSF protocol)
  - UDP port 62030         (MMDVM protocol)
- - UPD port 20001         (DPlus protocol)
 
+Additionally, if setting up the dashboard TCP/80 and TCP/443 
+will be needed for HTTP and HTTPS traffic respectively.
