@@ -58,7 +58,7 @@ $PageOptions['DateFormat']                           = 'd.m.Y H:i';  // Date for
 $PageOptions['LastHeardTZ']                          = '';           // Arbitrary text after "Last Heard" column header
 
 
-$Service['PIDFile']                                  = '/var/log/xlxd.pid';
+$Service['PIDFile']                                  = '/run/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';
 
 $CallingHome['Active']                               = false;					// xlx phone home, true or false
