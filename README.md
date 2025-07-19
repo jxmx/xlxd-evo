@@ -58,17 +58,17 @@ steps with `sudo`.
     ```
 
 * Build the software
-```bash
-git clone https://github.com/jxmx/xlxd-evo.git
-cd xlxd-evo
-make
-```
+    ```bash
+    git clone https://github.com/jxmx/xlxd-evo.git
+    cd xlxd-evo
+    make
+    ```
 
 * Install Software
-```bash
-make install
-make -f systemd/Makefile install-user
-```
+    ```bash
+    make install
+    make -f systemd/Makefile install-user
+    ```
 
 * Edit configuration
     ```bash
@@ -82,14 +82,14 @@ make -f systemd/Makefile install-user
     http://xlxapi.rlx.lu/index.php?show=reflectors
 
 * Enable the services (ambed is optional for transcoding0
-```bash
-systemctl daemon-reload
-systemctl start xlxd
-systemctl enable xlxd
+    ```bash
+    systemctl daemon-reload
+    systemctl start xlxd
+    systemctl enable xlxd
 
-systemctl start ambed
-systemctl enable ambed
-```
+    systemctl start ambed
+    systemctl enable ambed
+    ```
 
 # Firewall Ports Needed
 
