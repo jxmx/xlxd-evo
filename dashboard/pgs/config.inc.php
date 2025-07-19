@@ -67,10 +67,10 @@ $CallingHome['ServerURL']                            = 'http://xlxapi.rlx.lu/api
 $CallingHome['PushDelay']                            = 600;					// push delay in seconds
 $CallingHome['Country']                              = "your_country";				// Country
 $CallingHome['Comment']                              = "your_comment";				// Comment. Max 100 character
-$CallingHome['HashFile']                             = "/tmp/callinghome.php";			// Make sure the apache user has read and write permissions in this folder.
-$CallingHome['LastCallHomefile']                     = "/tmp/lastcallhome.php";			// lastcallhome.php can remain in the tmp folder 
+$CallingHome['HashFile']                             = "/etc/xlxd/callinghome.php";			// Make sure the apache user has read and write permissions in this folder.
+$CallingHome['LastCallHomefile']                     = "/etc/xlxd/lastcallhome.php";			// lastcallhome.php can remain in the tmp folder 
 $CallingHome['OverrideIPAddress']                    = "";					// Insert your IP address here. Leave blank for autodetection. No need to enter a fake address.
-$CallingHome['InterlinkFile']                        = "/xlxd/xlxd.interlink";			// Path to interlink file
+$CallingHome['InterlinkFile']                        = "/etc/xlxd/xlxd.interlink";			// Path to interlink file
 
 $VNStat['Interfaces']                                = array();
 $VNStat['Interfaces'][0]['Name']                     = 'eth0';

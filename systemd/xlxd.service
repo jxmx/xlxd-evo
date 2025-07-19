@@ -9,6 +9,7 @@ Group=xlxd
 PermissionsStartOnly=true
 EnvironmentFile=/etc/default/xlxd
 ExecStartPre=chown -R xlxd:xlxd /etc/xlxd
+ExecStartPre=chown www-data:www-data /etc/xlxd/*.php
 ExecStartPre=touch /var/log/xlxd.xml
 ExecStartPre=chown -R xlxd:xlxd /var/log/xlxd.xml
 ExecStart=/usr/bin/xlxd-start ${REFLECTOR} ${BIND_IP} ${AMBED_IP}
