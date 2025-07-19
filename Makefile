@@ -73,6 +73,8 @@ debclean:
 	rm -f ../$(PKGNAME)*_$(RELVER)*
 	rm -f ../$(PKGNAME)*-$(RELVER)*
 	rm -rf debian/$(PKGNAME)
+	rm -rf debian/$(PKGNAME)-ambed
+	rm -rf debian/tmp
 	rm -f debian/files
 	rm -rf debian/.debhelper/
 	rm -f debian/debhelper-build-stamp
