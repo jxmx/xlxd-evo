@@ -12,7 +12,7 @@ Rules-Requires-Root: no
 
 Package: xlxd-evo
 Architecture: any
-Depends: ${misc:Depends}, iproute2, gawk 
+Depends: ${misc:Depends}, iproute2, awk 
 Description: XLXD Multiprotocol Reflector for amateur radio
 
 Package: xlxd-evo-ambed
