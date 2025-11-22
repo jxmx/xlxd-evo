@@ -49,7 +49,7 @@ set(YSF_KEEPALIVE_PERIOD "3" CACHE STRING "Keepalive period in seconds")
 set(YSF_KEEPALIVE_TIMEOUT "30" CACHE STRING "Keepalive timeout in seconds (keepalive * 10)")
 set(YSF_DEFAULT_NODE_TX_FREQ "437000000" CACHE STRING "Default TX frequency in Hz")
 set(YSF_DEFAULT_NODE_RX_FREQ "437000000" CACHE STRING "Default RX frequency in Hz")
-set(YSF_AUTOLINK_ENABLE "0" CACHE STRING "Enable YSF auto-link (1=yes, 0=no)")
+set(YSF_AUTOLINK_ENABLE "1" CACHE STRING "Enable YSF auto-link (1=yes, 0=no)")
 set(YSF_AUTOLINK_MODULE "A" CACHE STRING "YSF auto-link target module")
 
 set(G3_PRESENCE_PORT "12346" CACHE STRING "UDP port for G3 presence service")
