@@ -12,7 +12,7 @@ INSTALLABLES = $(CONF_INSTALLABLES) $(CONF_DOCABLES)
 install:	$(INSTALLABLES)
 
 $(DESTDIR)$(sysconfdir)/%: %
-	install -D -m 0644  $< $@
+	test ! -f $@ && install -D -m 0644  $< $@
 
 $(DESTDIR)$(docdir)/%: %
 	install -D -m 0644  $< $@

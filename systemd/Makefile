@@ -20,7 +20,8 @@ $(DESTDIR)/usr/bin/%:	%
 	install -D -m 0755 $< $@
 
 $(DESTDIR)/etc/default/%: %.default
-	install -D -m 0644  $< $@
+	test ! -f $@ && \
+		install -D -m 0644  $< $@
 
 .PHONY:	ensure-xlxd-user
 ensure-xlxd-user:
