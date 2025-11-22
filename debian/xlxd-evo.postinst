@@ -22,7 +22,7 @@ do_configure() {
 		--shell /usr/sbin/nologin --disabled-login --disabled-password xlxd
 	fi
 
-	systemd daemon-reload >/dev/null || true
+	systemctl daemon-reload >/dev/null || true
 	deb-systemd-invoke enable xlxd >/dev/null || true
 	deb-systemd-invoke start xlxd >/dev/null || true
 }

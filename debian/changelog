@@ -1,3 +1,33 @@
+xlxd-evo (2.5.4-2.deb13) stable; urgency=medium
+
+  * Autobuild of 2.5.4-2 for deb13
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 21 Nov 2025 20:44:24 -0500
+
+xlxd-evo (2.5.4-2) stable; urgency=medium
+
+  * fixes
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 21 Nov 2025 20:44:18 -0500
+
+xlxd-evo (2.5.4-1.deb13) stable; urgency=medium
+
+  * Autobuild of 2.5.4-1 for deb13
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 21 Nov 2025 20:41:11 -0500
+
+xlxd-evo (2.5.4-1.deb13) stable; urgency=medium
+
+  * Autobuild of 2.5.4-1 for deb13
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 21 Nov 2025 20:37:38 -0500
+
+xlxd-evo (2.5.4-1) stable; urgency=medium
+
+  * Fixes
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 21 Nov 2025 20:37:34 -0500
+
 xlxd-evo (2.5.3-1.deb12) stable; urgency=medium
 
   * Autobuild of 2.5.3-1 for deb12

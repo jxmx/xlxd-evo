@@ -1,7 +1,7 @@
 SRCNAME = xlxd-evo
 PKGNAME = xlxd-evo
-RELVER = 2.5.3
-DEBVER = 1
+RELVER = 2.5.4
+DEBVER = 2
 RELPLAT ?= deb$(shell lsb_release -rs 2> /dev/null)
 
 sysconfdir ?= /etc/xlxd
